@@ -2,4 +2,73 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--Sizes-->
+    <dimen name="size_small_24">24dp</dimen>
+    <dimen name="size_medium_52">52dp</dimen>
+    <dimen name="size_large_76">72dp</dimen>
+
+    <!--Spaces-->
+    <dimen name="spacing_small_8">8dp</dimen>
+    <dimen name="spacing_normal_16">16dp</dimen>
+    <dimen name="spacing_meadial_24">24dp</dimen>
+    <dimen name="spacing_medium_32">32dp</dimen>
+    <dimen name="spacing_large_56">56dp</dimen>
+    <dimen name="spacing_larger_72">72dp</dimen>
+
+    <!--Vertical and horizontal spacing-->
+    <dimen name="status_bar">24dp</dimen>
+    <dimen name="tool_bar">56dp</dimen>
+    <dimen name="list_item_64">64dp</dimen>
+    <dimen name="list_item_72">72dp</dimen>
+
+    <!--Title-->
+    <dimen name="title_72">72dp</dimen>
+    <dimen name="title_80">80dp</dimen>
+    <dimen name="sub_title">48dp</dimen>
+
+    <!--Touch target size-->
+    <dimen name="avatar">40dp</dimen>
+    <dimen name="icon">24dp</dimen>
+
+    <!--Padding-->
+    <dimen name="padding_small">16dp</dimen>
+    <dimen name="padding_normal">32dp</dimen>
+    <dimen name="padding_medial">56dp</dimen>
+    <dimen name="padding_medium">72dp</dimen>
+    <dimen name="padding_large">96dp</dimen>
+    <dimen name="padding_from_screen_edge">104dp</dimen>
+
+    <!--App bar-->
+    <dimen name="height">56dp</dimen>
+    <diman name="padding_left">16dp</diman>
+    <diman name="padding_right">16dp</diman>
+    <dimen name="icon_top_padding">16dp</dimen>
+    <dimen name="icon_bottom_padding">16dp</dimen>
+    <dimen name="icon_left_padding">16dp</dimen>
+
+    <dimen name="title_left_padding">72dp</dimen>
+    <dimen name="title_bottom_padding">20dp</dimen>
+    <dimen name="title_area_height">80dp</dimen>
+    <dimen name="title_area_bottom_padding">8dp</dimen>
+    <dimen name="content_padding_left">24dp</dimen>
+    <dimen name="content_padding_right">24dp</dimen>
+    <dimen name="icon_top_and_bottom_padding">20dp</dimen>
+
+    <!--System bars-->
+    <dimen name="status_bar_height">24dp</dimen>
+
+    <!--Margins-->
+    <dimen name="margins_right_8dp">8dp</dimen>
+    <dimen name="margins_left_8dp">8dp</dimen>
+    <dimen name="margins_right_16dp">16dp</dimen>
+    <dimen name="margins_left_16dp">16dp</dimen>
+    <dimen name="margins_right_24dp">24dp</dimen>
+    <dimen name="margins_left_24dp">24dp</dimen>
+
+    <!--Distance from the edge-->
+    <dimen name="distance_small_8">8dp</dimen>
+    <dimen name="distance_normal_16">16dp</dimen>
+    <dimen name="distance_large_24">24dp</dimen>
+
 </resources>
