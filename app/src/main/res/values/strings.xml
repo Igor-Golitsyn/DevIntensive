@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Голицын Игорь</string>
+    <string name="mobile_number">+7(905)8334750</string>
+    <string name="email">polus79@mail.ru</string>
+    <string name="profile_vk">https://vk.com/igolitsyn</string>
+    <string name="github_repo">https://github.com/Igor-Golitsyn/DevIntensive</string>
 </resources>
