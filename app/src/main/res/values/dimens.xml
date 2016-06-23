@@ -6,7 +6,7 @@
     <!--Sizes-->
     <dimen name="size_small_24">24dp</dimen>
     <dimen name="size_medium_52">52dp</dimen>
-    <dimen name="size_large_76">72dp</dimen>
+    <dimen name="size_big_72">72dp</dimen>
 
     <!--Spaces-->
     <dimen name="spacing_small_8">8dp</dimen>
