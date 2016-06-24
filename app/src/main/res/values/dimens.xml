@@ -70,5 +70,6 @@
     <dimen name="distance_small_8">8dp</dimen>
     <dimen name="distance_normal_16">16dp</dimen>
     <dimen name="distance_large_24">24dp</dimen>
+    <dimen name="line_size">1dp</dimen>
 
 </resources>
