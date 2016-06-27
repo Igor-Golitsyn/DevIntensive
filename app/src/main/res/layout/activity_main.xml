@@ -1,253 +1,313 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              tools:context=".ui.activities.MainActivity">
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.MainActivity"
+    >
 
-    <android.support.v4.widget.NestedScrollView
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/main_coordinator_conteiner"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/color_primary"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-            <!-- Create status bar -->
-            <LinearLayout
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                app:contentScrim="@color/color_primary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <View style="@style/separatorBig"></View>
+                <ImageView
+                    android:id="@+id/user_photo_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/profile_image_size"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/userphoto"/>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_marginTop="@dimen/size_small_24"
+                    android:theme="@style/AppTheme.PopupOverlay"
+                    android:titleTextColor="@color/color_white"
+                    app:layout_collapseMode="pin">
+                </android.support.v7.widget.Toolbar>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+            >
+            <!-- Created scroll -->
+            <android.support.v4.widget.NestedScrollView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_medium_56"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:background="@color/color_dim_gray"
-                    android:orientation="horizontal">
-                    <!-- First element reiting -->
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <!-- Create status bar -->
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="25"
                         android:orientation="vertical">
 
-                        <TextView
-                            style="@style/textViewStatus.value"
-                            android:text="5"
+                        <View style="@style/separatorBig"></View>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:background="@color/color_dim_gray"
+                            android:orientation="horizontal">
+                            <!-- First element reiting -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="25"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStatus.value"
+                                    android:text="5"
+                                    />
+
+                                <TextView
+                                    style="@style/textViewStatus.nameValue"
+                                    android:text="Рейтинг"
+                                    />
+                            </LinearLayout>
+
+                            <View
+                                style="@style/separatorVertical">
+                            </View>
+                            <!-- Second element code -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStatus.value"
+                                    android:text="5"
+                                    />
+
+                                <TextView
+                                    style="@style/textViewStatus.nameValue"
+                                    android:text="Написано строк кода"
+                                    />
+                            </LinearLayout>
+
+                            <View
+                                style="@style/separatorVertical">
+                            </View>
+                            <!-- Third element proekts -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="25"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/textViewStatus.value"
+                                    android:text="5"
+                                    />
+
+                                <TextView
+                                    style="@style/textViewStatus.nameValue"
+                                    android:text="Проектов"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            style="@style/separatorBig">
+                        </View>
+                    </LinearLayout>
+                    <!-- Create phone field -->
+                    <LinearLayout
+                        style="@style/horizontalElement">
+
+                        <ImageView
+                            style="@style/icon.left"
+                            android:src="@drawable/ic_call_black_24dp"
                             />
 
-                        <TextView
-                            style="@style/textViewStatus.nameValue"
-                            android:text="Рейтинг"
-                            />
+                        <LinearLayout
+                            style="@style/centralElement">
+
+                            <android.support.design.widget.TextInputLayout
+                                style="@style/textInputLayout"
+                                >
+
+                                <EditText
+                                    style="@style/editText"
+                                    android:hint="@string/mobile_number_string"
+                                    android:text="@string/mobile_number"
+                                    />
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/call_img"
+                            style="@style/icon.right"
+                            android:src="@drawable/ic_phone_in_talk_black_24dp"/>
                     </LinearLayout>
+
                     <View
-                        style="@style/separatorVertical">
+                        style="@style/separatorGorizontal">
                     </View>
-                    <!-- Second element code -->
+                    <!-- Create mail field -->
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:orientation="vertical">
+                        style="@style/horizontalElement">
 
-                        <TextView
-                            style="@style/textViewStatus.value"
-                            android:text="5"
+                        <ImageView
+                            style="@style/icon.left"
+                            android:src="@drawable/ic_email_black_24dp"
                             />
 
-                        <TextView
-                            style="@style/textViewStatus.nameValue"
-                            android:text="Написано строк кода"
-                            />
+                        <LinearLayout
+                            style="@style/centralElement">
+
+                            <android.support.design.widget.TextInputLayout
+                                style="@style/textInputLayout">
+
+                                <EditText
+                                    style="@style/editText"
+                                    android:hint="@string/email_string"
+                                    android:text="@string/email"/>
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/icon.right"
+                            android:src="@drawable/ic_send_black_24dp"/>
                     </LinearLayout>
+
                     <View
-                        style="@style/separatorVertical">
+                        style="@style/separatorGorizontal">
                     </View>
-                    <!-- Third element proekts -->
+                    <!-- Create  VK field -->
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="25"
-                        android:orientation="vertical">
+                        style="@style/horizontalElement">
 
-                        <TextView
-                            style="@style/textViewStatus.value"
-                            android:text="5"
+                        <ImageView
+                            style="@style/icon.left"
+                            android:src="@drawable/ic_vk_circle_black_24dp"
                             />
 
-                        <TextView
-                            style="@style/textViewStatus.nameValue"
-                            android:text="Проектов"
+                        <LinearLayout
+                            style="@style/centralElement">
+
+                            <android.support.design.widget.TextInputLayout
+                                style="@style/textInputLayout">
+
+                                <EditText
+                                    style="@style/editText"
+                                    android:hint="@string/profile_vk_String"
+                                    android:text="@string/profile_vk"/>
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/icon.right"
+                            android:src="@drawable/ic_visibility_black_24dp"/>
+                    </LinearLayout>
+
+                    <View
+                        style="@style/separatorGorizontal">
+                    </View>
+                    <!-- Create Git profile field -->
+                    <LinearLayout
+                        style="@style/horizontalElement">
+
+                        <ImageView
+                            style="@style/icon.left"
+                            android:src="@drawable/ic_github_circle_black_24dp"
+                            />
+
+                        <LinearLayout
+                            style="@style/centralElement">
+
+                            <android.support.design.widget.TextInputLayout
+                                style="@style/textInputLayout">
+
+                                <EditText
+                                    style="@style/editText"
+                                    android:hint="@string/github_repo_string"
+                                    android:text="@string/github_repo"/>
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/icon.right"
+                            android:src="@drawable/ic_visibility_black_24dp"/>
+                    </LinearLayout>
+
+                    <View
+                        style="@style/separatorGorizontal">
+                    </View>
+                    <!-- Create user about field-->
+                    <LinearLayout
+                        style="@style/horizontalElement">
+
+                        <ImageView
+                            style="@style/icon.left"
+                            android:src="@drawable/ic_account_circle_black_24dp"
+                            />
+
+                        <LinearLayout
+                            style="@style/centralElement"
+                            android:layout_height="wrap_content">
+
+                            <android.support.design.widget.TextInputLayout
+                                style="@style/textInputLayout"
+                                >
+
+                                <EditText
+                                    style="@style/editText"
+                                    android:hint="@string/about_string"
+                                    android:text="@string/about"
+                                    />
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
+
+                        <ImageView
+                            style="@style/icon.right"
                             />
                     </LinearLayout>
                 </LinearLayout>
-
-                <View
-                    style="@style/separatorBig">
-
-                </View>
-            </LinearLayout>
-            <!-- Create phone field -->
-            <LinearLayout
-                style="@style/horizontalElement">
-
-                <ImageView
-                    style="@style/icon.left"
-                    android:src="@drawable/ic_call_black_24dp"
-                    />
-
-                <LinearLayout
-                    style="@style/centralElement">
-
-                    <android.support.design.widget.TextInputLayout
-                        style="@style/textInputLayout"
-                        >
-
-                        <EditText
-                            style="@style/editText"
-                            android:hint="@string/mobile_number_string"
-                            android:text="@string/mobile_number"
-                            />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-                <ImageView
-                    style="@style/icon.right"
-                    android:src="@drawable/ic_phone_in_talk_black_24dp"/>
-            </LinearLayout>
-
-            <View
-                style="@style/separatorGorizontal">
-            </View>
-            <!-- Create mail field -->
-            <LinearLayout
-                style="@style/horizontalElement">
-
-                <ImageView
-                    style="@style/icon.left"
-                    android:src="@drawable/ic_email_black_24dp"
-                    />
-
-                <LinearLayout
-                    style="@style/centralElement">
-
-                    <android.support.design.widget.TextInputLayout
-                        style="@style/textInputLayout">
-
-                        <EditText
-                            style="@style/editText"
-                            android:hint="@string/email_string"
-                            android:text="@string/email"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-                <ImageView
-                    style="@style/icon.right"
-                    android:src="@drawable/ic_send_black_24dp"/>
-            </LinearLayout>
-
-            <View
-                style="@style/separatorGorizontal">
-
-            </View>
-            <!-- Create  VK field -->
-            <LinearLayout
-                style="@style/horizontalElement">
-
-                <ImageView
-                    style="@style/icon.left"
-                    android:src="@drawable/ic_vk_circle_black_24dp"
-                    />
-
-                <LinearLayout
-                    style="@style/centralElement">
-
-                    <android.support.design.widget.TextInputLayout
-                        style="@style/textInputLayout">
-
-                        <EditText
-                            style="@style/editText"
-                            android:hint="@string/profile_vk_String"
-                            android:text="@string/profile_vk"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-                <ImageView
-                    style="@style/icon.right"
-                    android:src="@drawable/ic_visibility_black_24dp"/>
-            </LinearLayout>
-
-            <View
-                style="@style/separatorGorizontal">
-
-            </View>
-            <!-- Create Git profile field -->
-            <LinearLayout
-                style="@style/horizontalElement">
-
-                <ImageView
-                    style="@style/icon.left"
-                    android:src="@drawable/ic_github_circle_black_24dp"
-                    />
-
-                <LinearLayout
-                    style="@style/centralElement">
-
-                    <android.support.design.widget.TextInputLayout
-                        style="@style/textInputLayout">
-
-                        <EditText
-                            style="@style/editText"
-                            android:hint="@string/github_repo_string"
-                            android:text="@string/github_repo"/>
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-                <ImageView
-                    style="@style/icon.right"
-                    android:src="@drawable/ic_visibility_black_24dp"/>
-            </LinearLayout>
-
-            <View
-                style="@style/separatorGorizontal">
-
-            </View>
-            <!-- Create user about field-->
-            <LinearLayout
-                style="@style/horizontalElement">
-
-                <ImageView
-                    style="@style/icon.left"
-                    android:src="@drawable/ic_account_circle_black_24dp"
-                    />
-
-                <LinearLayout
-                    style="@style/centralElement"
-                    android:layout_height="wrap_content">
-
-                    <android.support.design.widget.TextInputLayout
-                        style="@style/textInputLayout"
-                        >
-
-                        <EditText
-                            style="@style/editText"
-                            android:hint="@string/about_string"
-                            android:text="@string/about"
-                            />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-
-                <ImageView
-                    style="@style/icon.right"
-                    />
-            </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-</LinearLayout>
 
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_header"
+        app:menu="@menu/drawer_menu">
+
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>
