@@ -6,7 +6,7 @@
     <!--Sizes-->
     <dimen name="size_small_24">24dp</dimen>
     <dimen name="size_medium_52">52dp</dimen>
-    <dimen name="size_large_76">72dp</dimen>
+    <dimen name="size_big_72">72dp</dimen>
 
     <!--Spaces-->
     <dimen name="spacing_small_8">8dp</dimen>
@@ -41,8 +41,8 @@
 
     <!--App bar-->
     <dimen name="height">56dp</dimen>
-    <diman name="padding_left">16dp</diman>
-    <diman name="padding_right">16dp</diman>
+    <dimen name="padding_left">16dp</dimen>
+    <dimen name="padding_right">16dp</dimen>
     <dimen name="icon_top_padding">16dp</dimen>
     <dimen name="icon_bottom_padding">16dp</dimen>
     <dimen name="icon_left_padding">16dp</dimen>
@@ -70,5 +70,6 @@
     <dimen name="distance_small_8">8dp</dimen>
     <dimen name="distance_normal_16">16dp</dimen>
     <dimen name="distance_large_24">24dp</dimen>
+    <dimen name="line_size">1dp</dimen>
 
 </resources>
