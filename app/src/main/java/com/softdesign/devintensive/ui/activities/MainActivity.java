@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 showSnackBar(item.getTitle().toString());
-                item.setChecked(true);
+                item.setCheckable(true);
                 mNavigationDrawer.closeDrawer(GravityCompat.START);
                 return false;
             }
