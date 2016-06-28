@@ -56,6 +56,7 @@
         <item name="android:background">@color/color_gray_light</item>
         <item name="android:layout_marginLeft">@dimen/spacing_larger_72</item>
     </style>
+
     <style name="separatorVertical">
         <item name="android:layout_width">@dimen/line_size</item>
         <item name="android:layout_height">match_parent</item>
@@ -88,11 +89,17 @@
     <style name="custom_dialog">
         <item name="android:fullDark">@android:color/transparent</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
     </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+    </style>
+
+    <style name="marginTopForToolbar"></style>
 
 </resources>

@@ -8,4 +8,7 @@
         <item name="android:statusBarColor">@color/color_accent</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
+    <style name="marginTopForToolbar">
+        <item name="android:layout_marginTop">@dimen/spacing_meadial_24</item>
+    </style>
 </resources>
