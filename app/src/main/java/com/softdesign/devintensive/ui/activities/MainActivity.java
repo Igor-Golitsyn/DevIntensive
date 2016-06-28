@@ -181,4 +181,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
         mDataManager.getPreferenceManager().saveUserProfileData(userData);
     }
+
+    @Override
+    public void onBackPressed() {
+        if (mNavigationDrawer.isDrawerOpen(GravityCompat.START)){
+            mNavigationDrawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 }

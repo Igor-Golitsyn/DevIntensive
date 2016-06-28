@@ -9,7 +9,7 @@
                 android:paddingTop="@dimen/spacing_meadial_24">
 
 
-        <ImageView
+        <com.github.siyamed.shapeimageview.CircularImageView
             android:id="@+id/drawer_header_img"
             android:layout_width="60dp"
             android:layout_height="60dp"

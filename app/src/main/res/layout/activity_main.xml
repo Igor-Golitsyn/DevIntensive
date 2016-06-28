@@ -50,7 +50,6 @@
 
         </android.support.design.widget.AppBarLayout>
 
-
         <!-- Created scroll -->
         <android.support.v4.widget.NestedScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -68,14 +67,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+
                     <View style="@style/separatorBig"></View>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
                         android:background="@color/color_dim_gray"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        >
                         <!-- First element reiting -->
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -102,7 +103,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="50"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            >
 
                             <TextView
                                 style="@style/textViewStatus.value"
@@ -137,9 +139,8 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                    <View
-                        style="@style/separatorBig">
-                    </View>
+                    <View style="@style/separatorBig"></View>
+
                 </LinearLayout>
                 <!-- Create phone field -->
                 <LinearLayout
@@ -306,10 +307,10 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/fab_right_space"
             android:src="@drawable/ic_create_black_24dp"
             app:layout_anchor="@id/appbar_layout"
-            app:layout_anchorGravity="bottom|right"
-            android:layout_marginRight="@dimen/fab_right_space"/>
+            app:layout_anchorGravity="bottom|right"/>
 
     </android.support.design.widget.CoordinatorLayout>
 
@@ -320,6 +321,5 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_header"
         app:menu="@menu/drawer_menu">
-
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
