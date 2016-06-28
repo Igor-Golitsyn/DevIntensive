@@ -33,6 +33,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private EditText mUserPhone, mUserMail, mUserVK, mUserGit, mUserBio;
     private List<EditText> mUserInfoViews;
     private DataManager mDataManager;
+    private ImageView drawerHeaderImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mUserVK = (EditText) findViewById(R.id.vk_et);
         mUserGit = (EditText) findViewById(R.id.git_et);
         mUserBio = (EditText) findViewById(R.id.bio_et);
+        drawerHeaderImg = (ImageView) findViewById(R.id.drawer_header_img);
         mUserInfoViews = new ArrayList<>();
         mUserInfoViews.add(mUserPhone);
         mUserInfoViews.add(mUserMail);
