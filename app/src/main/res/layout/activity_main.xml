@@ -50,6 +50,94 @@
 
         </android.support.design.widget.AppBarLayout>
 
+        <!-- Create status bar -->
+        <LinearLayout
+            android:id="@+id/user_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_behavior="com.softdesign.devintensive.utils.UserScrollBehavior">
+
+
+            <View
+                android:id="@+id/big_separ_first"
+                style="@style/separatorBig"></View>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_dim_gray"
+                android:orientation="horizontal"
+                >
+                <!-- First element reiting -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/textViewStatus.value"
+                        android:text="@string/reiting_value"
+                        />
+
+                    <TextView
+                        style="@style/textViewStatus.nameValue"
+                        android:text="@string/reiting_name"
+                        />
+                </LinearLayout>
+
+                <View
+                    style="@style/separatorVertical">
+                </View>
+                <!-- Second element code -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        style="@style/textViewStatus.value"
+                        android:text="@string/lines_code_value"
+                        />
+
+                    <TextView
+                        style="@style/textViewStatus.nameValue"
+                        android:text="@string/lines_code_name"
+                        />
+                </LinearLayout>
+
+                <View
+                    style="@style/separatorVertical">
+                </View>
+                <!-- Third element proekts -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="25"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/textViewStatus.value"
+                        android:text="@string/projects_value"
+                        />
+
+                    <TextView
+                        style="@style/textViewStatus.nameValue"
+                        android:text="@string/projects_name"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/big_separ_second"
+                style="@style/separatorBig"></View>
+
+        </LinearLayout>
+
         <!-- Created scroll -->
         <android.support.v4.widget.NestedScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -61,87 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <!-- Create status bar -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
-
-                    <View style="@style/separatorBig"></View>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/color_dim_gray"
-                        android:orientation="horizontal"
-                        >
-                        <!-- First element reiting -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="25"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/textViewStatus.value"
-                                android:text="@string/reiting_value"
-                                />
-
-                            <TextView
-                                style="@style/textViewStatus.nameValue"
-                                android:text="@string/reiting_name"
-                                />
-                        </LinearLayout>
-
-                        <View
-                            style="@style/separatorVertical">
-                        </View>
-                        <!-- Second element code -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="50"
-                            android:orientation="vertical"
-                            >
-
-                            <TextView
-                                style="@style/textViewStatus.value"
-                                android:text="@string/lines_code_value"
-                                />
-
-                            <TextView
-                                style="@style/textViewStatus.nameValue"
-                                android:text="@string/lines_code_name"
-                                />
-                        </LinearLayout>
-
-                        <View
-                            style="@style/separatorVertical">
-                        </View>
-                        <!-- Third element proekts -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="25"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/textViewStatus.value"
-                                android:text="@string/projects_value"
-                                />
-
-                            <TextView
-                                style="@style/textViewStatus.nameValue"
-                                android:text="@string/projects_name"
-                                />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <View style="@style/separatorBig"></View>
-
-                </LinearLayout>
                 <!-- Create phone field -->
                 <LinearLayout
                     style="@style/horizontalElement">
