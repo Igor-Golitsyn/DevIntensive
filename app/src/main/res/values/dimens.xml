@@ -5,7 +5,7 @@
 
     <!--Sizes-->
     <dimen name="size_small_24">24dp</dimen>
-    <dimen name="size_medium_52">52dp</dimen>
+    <dimen name="size_medium_56">56dp</dimen>
     <dimen name="size_big_72">72dp</dimen>
 
     <!--Spaces-->
@@ -71,5 +71,8 @@
     <dimen name="distance_normal_16">16dp</dimen>
     <dimen name="distance_large_24">24dp</dimen>
     <dimen name="line_size">1dp</dimen>
+    <dimen name="profile_image_size">256dp</dimen>
+    <dimen name="fab_right_space">8dp</dimen>
+    <dimen name="placeholder_photo_size_90">90dp</dimen>
 
 </resources>
