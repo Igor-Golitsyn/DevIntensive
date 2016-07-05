@@ -34,5 +34,7 @@
     <string name="error_input_data">Введены ошибочные данные!</string>
     <string name="vk_com">vk.com</string>
     <string name="github_com">github.com</string>
+    <string name="wrong_email">Неправильный почтовый ящик!</string>
+    <string name="wrong_phone_number">Неправильный номер телефона!</string>
 
 </resources>
