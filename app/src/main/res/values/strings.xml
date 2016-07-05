@@ -32,5 +32,7 @@
     <string name="forgot_password">Забыли пароль?\n</string>
     <string name="error_make_photo">Не удалось сделать фото,\nвыберите фото из галареи:</string>
     <string name="error_input_data">Введены ошибочные данные!</string>
+    <string name="vk_com">vk.com</string>
+    <string name="github_com">github.com</string>
 
 </resources>

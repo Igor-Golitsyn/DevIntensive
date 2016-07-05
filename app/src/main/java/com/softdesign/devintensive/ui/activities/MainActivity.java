@@ -128,8 +128,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!s.toString().startsWith("vk.com")) {
-                    mUserVK.setText("vk.com");
+                if (!s.toString().startsWith(getString(R.string.vk_com))) {
+                    mUserVK.setText(getString(R.string.vk_com));
                     Selection.setSelection(mUserVK.getText(), mUserVK.getText().length());
                 }
             }
@@ -145,8 +145,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!s.toString().startsWith("github.com")) {
-                    mUserGit.setText("github.com");
+                if (!s.toString().startsWith(getString(R.string.github_com))) {
+                    mUserGit.setText(getString(R.string.github_com));
                     Selection.setSelection(mUserGit.getText(), mUserGit.getText().length());
                 }
             }
@@ -263,7 +263,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     mCurrentEditMode = !mCurrentEditMode;
                     changeEditMode(mCurrentEditMode);
                 } else {
-                    showSnackBar(getString(R.string.error_input_data));
+                    showToast(getString(R.string.error_input_data));
                 }
                 break;
             case R.id.profile_placeholder:
