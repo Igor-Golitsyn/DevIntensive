@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/autorize_layout"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/login_bg"
+              android:gravity="center"
+              android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle"
+        android:elevation="@dimen/size_small_24"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_small_24"
+            android:layout_marginTop="@dimen/size_small_24"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="bottom"
+            android:text="@string/incomin_programm_text"
+            android:textColor="@color/color_orange_red"
+            android:textSize="@dimen/size_small_24"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/distance_small_8"
+            android:layout_marginLeft="@dimen/size_small_24"
+            android:layout_marginRight="@dimen/size_small_24">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email_string"
+                android:inputType="textEmailAddress"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_small_24"
+            android:layout_marginRight="@dimen/size_small_24">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password_inter_text"
+                android:inputType="textPassword"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/distance_small_8"
+            android:backgroundTint="@color/color_orange_red"
+            android:text="@string/incomin_programm_text"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/distance_small_8"
+            android:text="@string/forgot_password"
+            android:textColor="@color/color_gray_light"/>
+    </LinearLayout>
+
+
+</LinearLayout>
