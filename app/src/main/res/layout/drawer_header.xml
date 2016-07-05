@@ -2,21 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="172dp"
-                android:background="@drawable/header_bg"
+                android:background="@drawable/camaro_yellow"
                 android:paddingBottom="@dimen/spacing_small_8"
                 android:paddingLeft="@dimen/spacing_normal_16"
                 android:paddingRight="@dimen/spacing_normal_16"
                 android:paddingTop="@dimen/spacing_meadial_24">
 
-
-        <com.github.siyamed.shapeimageview.CircularImageView
-            android:id="@+id/drawer_header_img"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="@dimen/spacing_normal_16"
-            android:src="@drawable/camaro_yellow"
-            android:scaleType="centerCrop"
-            />
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:id="@+id/drawer_header_img"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="@dimen/spacing_normal_16"
+        android:scaleType="centerCrop"
+        android:src="@drawable/camaro_yellow"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
