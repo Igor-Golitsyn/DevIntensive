@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.softdesign.devintensive.R;
 import com.softdesign.devintensive.utils.ConstantManager;
@@ -18,7 +19,10 @@ import butterknife.ButterKnife;
  */
 public class DevintensiveAutorize extends Activity implements View.OnClickListener {
     private static final String TAG = ConstantManager.TAG_PREFIX + "DevAutorize";
-    @BindView(R.id.login_button)Button mButton;
+    @BindView(R.id.login_button)
+    Button mButton;
+    @BindView(R.id.autorize_layout)
+    LinearLayout mAutorizeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +36,10 @@ public class DevintensiveAutorize extends Activity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         Log.d(TAG, "onClick");
-        if (v.getId()==R.id.login_button){
+        if (v.getId() == R.id.login_button) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            mAutorizeLayout.setBackgroundColor(getResources().getColor(R.color.color_dim_gray));
             finish();
         }
     }
