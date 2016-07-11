@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Голицын Игорь</string>
-    <string name="mobile_number">+7(905)833-47-50</string>
+    <string name="mobile_number">+7 905 8 33-47-50</string>
     <string name="mobile_number_string">Мобильный</string>
     <string name="email">polus79@mail.ru</string>
     <string name="email_string">E-mail</string>
-    <string name="profile_vk">https://vk.com/igolitsyn</string>
+    <string name="profile_vk">vk.com/igolitsyn</string>
     <string name="profile_vk_String">Профиль в VK</string>
-    <string name="github_repo">https://github.com/Igor-Golitsyn/DevIntensive</string>
+    <string name="github_repo">github.com/Igor-Golitsyn/DevIntensive</string>
     <string name="github_repo_string">Репозиторий</string>
     <string name="about">I study java \n 1 \n 2 \n 3 \n 4 \n 5 \n 6</string>
     <string name="about_string">О себе</string>
@@ -18,5 +18,23 @@
     <string name="projects_name">Проектов</string>
     <string name="my_profile">Мой профиль</string>
     <string name="my_team">Команда</string>
+    <string name="user_profile.placeholder.image">Изменить фотографию профиля</string>
+    <string name="user_profile_dialog_gallery">Загрузить из галереи</string>
+    <string name="user_profile_dialog_camera">Сделать снимок</string>
+    <string name="user_profile_dialog_cancel">Отмена</string>
+    <string name="user_profile_dialog_title">Изменить фото профиля</string>
+    <string name="user_profile_chose_message">выберите фото</string>
+    <string name="request_correct_work_programm">Для корректной работы необходимо дать разрешения</string>
+    <string name="solve_answer">Разрешить</string>
+    <string name="permission_to__received">Разрешение на %s получено</string>
+    <string name="incomin_programm_text">ВОЙТИ</string>
+    <string name="password_inter_text">Пароль</string>
+    <string name="forgot_password">Забыли пароль?\n</string>
+    <string name="error_make_photo">Не удалось сделать фото,\nвыберите фото из галареи:</string>
+    <string name="error_input_data">Введены ошибочные данные!</string>
+    <string name="vk_com">vk.com</string>
+    <string name="github_com">github.com</string>
+    <string name="wrong_email">Неправильный почтовый ящик!</string>
+    <string name="wrong_phone_number">Неправильный номер телефона!</string>
 
 </resources>
