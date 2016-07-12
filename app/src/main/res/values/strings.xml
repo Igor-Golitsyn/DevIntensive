@@ -29,7 +29,7 @@
     <string name="permission_to__received">Разрешение на %s получено</string>
     <string name="incomin_programm_text">ВОЙТИ</string>
     <string name="password_inter_text">Пароль</string>
-    <string name="forgot_password">Забыли пароль?\n</string>
+    <string name="forgot_password">Забыли пароль?</string>
     <string name="error_make_photo">Не удалось сделать фото,\nвыберите фото из галареи:</string>
     <string name="error_input_data">Введены ошибочные данные!</string>
     <string name="vk_com">vk.com</string>
