@@ -63,6 +63,18 @@ public class UserModelRes {
         public ProfileValues getProfileValues() {
             return profileValues;
         }
+
+        public Contacts getContacts() {
+            return contacts;
+        }
+
+        public PublicInfo getPublicInfo() {
+            return publicInfo;
+        }
+
+        public Repositories getRepositories() {
+            return repositories;
+        }
     }
     public class Repositories {
         @SerializedName("repo")
@@ -71,6 +83,10 @@ public class UserModelRes {
         @SerializedName("updated")
         @Expose
         private String updated;
+
+        public List<Repo> getRepo() {
+            return repo;
+        }
     }
     public class Repo {
         @SerializedName("_id")
@@ -82,6 +98,10 @@ public class UserModelRes {
         @SerializedName("title")
         @Expose
         private String title;
+
+        public String getGit() {
+            return git;
+        }
     }
     public class PublicInfo {
         @SerializedName("bio")
@@ -96,6 +116,18 @@ public class UserModelRes {
         @SerializedName("updated")
         @Expose
         private String updated;
+
+        public String getBio() {
+            return bio;
+        }
+
+        public String getAvatar() {
+            return avatar;
+        }
+
+        public String getPhoto() {
+            return photo;
+        }
     }
     public class ProfileValues {
         @SerializedName("homeTask")
@@ -155,5 +187,17 @@ public class UserModelRes {
         @SerializedName("updated")
         @Expose
         private String updated;
+
+        public String getVk() {
+            return vk;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public String getEmail() {
+            return email;
+        }
     }
 }

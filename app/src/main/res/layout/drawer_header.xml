@@ -9,7 +9,7 @@
                 android:paddingTop="@dimen/spacing_meadial_24">
 
     <com.github.siyamed.shapeimageview.CircularImageView
-        android:id="@+id/drawer_header_img"
+        android:id="@+id/drawer_header_avatar"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="@dimen/spacing_normal_16"
@@ -26,7 +26,7 @@
         >
 
         <TextView
-            android:id="@+id/user_name_txt"
+            android:id="@+id/drawer_header_user_name_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
@@ -35,7 +35,7 @@
             android:textSize="14sp"/>
 
         <TextView
-            android:id="@+id/user_email_txt"
+            android:id="@+id/drawer_header_user_email_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"

@@ -56,11 +56,24 @@ public class PreferenceManager {
         Log.d(TAG, "saveUserPhoto");
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putString(ConstantManager.USER_PHOTO_KEY, uri.toString());
+        editor.apply();
+    }
+    public void saveUserAvatar(Uri uri) {
+        Log.d(TAG, "saveUserAvatar");
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(ConstantManager.USER_AVATAR_KEY, uri.toString());
+        editor.apply();
     }
 
     public Uri loadUserPhoto() {
         Log.d(TAG, "loadUserPhoto");
-        return Uri.parse(mSharedPreferences.getString(ConstantManager.USER_PHOTO_KEY, "android.resource://com.softdesign.devintensive/drawable/userphoto"));
+        Uri uri=Uri.parse(mSharedPreferences.getString(ConstantManager.USER_PHOTO_KEY, "android.resource://com.softdesign.devintensive/drawable/userphoto"));
+        return uri;
+    }
+    public Uri loadUserAvatar() {
+        Log.d(TAG, "loadUserAvatar");
+        Uri uri=Uri.parse(mSharedPreferences.getString(ConstantManager.USER_AVATAR_KEY, "android.resource://com.softdesign.devintensive/drawable/camaro_yellow"));
+        return uri;
     }
 
     public void saveAuthToken(String token) {

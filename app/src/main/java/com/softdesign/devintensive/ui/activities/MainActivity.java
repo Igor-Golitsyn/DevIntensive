@@ -42,6 +42,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.github.siyamed.shapeimageview.CircularImageView;
 import com.softdesign.devintensive.R;
 import com.softdesign.devintensive.data.managers.DataManager;
 import com.softdesign.devintensive.utils.ConstantManager;
@@ -110,6 +111,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     TextView mUserValueCodeLines;
     @BindView(R.id.user_value_projects)
     TextView mUserValueProjects;
+    private CircularImageView mCircularDrawerHeaderAvatar;
+    private TextView mUserNameDrawerHeader;
+    private TextView mUserEmailDrawerHeader;
     private List<TextView> mUserValuesViews;
 
     /**
@@ -163,9 +167,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
+
             @Override
             public void afterTextChanged(Editable s) {
                 if (!checkEmail()) showToast(getString(R.string.wrong_email));
@@ -175,12 +181,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
+
             @Override
             public void afterTextChanged(Editable s) {
-                if (!checkPhoneNumber())showToast(getString(R.string.wrong_phone_number));
+                if (!checkPhoneNumber()) showToast(getString(R.string.wrong_phone_number));
             }
         });
 
@@ -191,7 +199,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mUserInfoViews.add(mUserGit);
         mUserInfoViews.add(mUserBio);
 
-        mUserValuesViews=new ArrayList<>();
+        mUserValuesViews = new ArrayList<>();
         mUserValuesViews.add(mUserValueRaiting);
         mUserValuesViews.add(mUserValueCodeLines);
         mUserValuesViews.add(mUserValueProjects);
@@ -207,6 +215,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setupDrawer();
         initUserInfo();
         initFromServerUserValue();
+
 
         Picasso.with(this)
                 .load(mDataManager.getPreferenceManager().loadUserPhoto())
@@ -362,6 +371,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 return false;
             }
         });
+        mCircularDrawerHeaderAvatar = (CircularImageView) navigationView.getHeaderView(0).findViewById(R.id.drawer_header_avatar);
+        mUserEmailDrawerHeader = (TextView) navigationView.getHeaderView(0).findViewById(R.id.drawer_header_user_email_txt);
+        mUserEmailDrawerHeader.setText(mDataManager.getPreferenceManager().loadUserProfileData().get(1));
+        Picasso.with(this)
+                .load(mDataManager.getPreferenceManager().loadUserAvatar())
+                .placeholder(R.drawable.camaro_yellow)
+                .into(mCircularDrawerHeaderAvatar);
     }
 
     /**
@@ -700,10 +716,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         if (lastT < 2) return false;//на символы перед "."
         return true;
     }
-    private void initFromServerUserValue(){
+
+    private void initFromServerUserValue() {
         Log.d(TAG, "initFromServerUserValue");
-        List<String> userData=mDataManager.getPreferenceManager().loadUserProfileValues();
-        for (int i=0;i<userData.size();i++){
+        List<String> userData = mDataManager.getPreferenceManager().loadUserProfileValues();
+        for (int i = 0; i < userData.size(); i++) {
             mUserValuesViews.get(i).setText(userData.get(i));
         }
     }

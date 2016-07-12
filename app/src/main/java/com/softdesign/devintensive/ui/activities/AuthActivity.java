@@ -19,7 +19,8 @@ import com.softdesign.devintensive.data.network.res.UserModelRes;
 import com.softdesign.devintensive.utils.ConstantManager;
 import com.softdesign.devintensive.utils.NetworkStatusChecker;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -84,19 +85,20 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
         mDataManager.getPreferenceManager().saveAuthToken(userModelRes.getData().getToken());
         mDataManager.getPreferenceManager().saveUserId(userModelRes.getData().getUser().getId());
         saveUserValues(userModelRes);
+        saveUserContacts(userModelRes);
         Intent loginIntent = new Intent(this, MainActivity.class);
         startActivity(loginIntent);
         finish();
     }
 
     private void signIn() {
+        Log.d(TAG, "signIn");
         if (NetworkStatusChecker.isNetworkAvailable(this)) {
             Call<UserModelRes> call = mDataManager.loginUser(new UserLoginReq(mLoginEmail.getText().toString(), mLoginPassword.getText().toString()));
             call.enqueue(new Callback<UserModelRes>() {
                 @Override
                 public void onResponse(Call<UserModelRes> call, Response<UserModelRes> response) {
                     if (response.code() == 200) {
-                        mCoordinatorLayoutImage.setVisibility(View.GONE);
                         loginSuccess(response.body());
                     } else {
                         if (response.code() == 404) {
@@ -117,12 +119,25 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
         }
     }
     private void saveUserValues(UserModelRes userModelRes){
+        Log.d(TAG, "saveUserValues");
         int[] userValues={
                 userModelRes.getData().getUser().getProfileValues().getRaiting(),
                 userModelRes.getData().getUser().getProfileValues().getLinesCode(),
                 userModelRes.getData().getUser().getProfileValues().getProjects(),
         };
         mDataManager.getPreferenceManager().saveUserProfileValues(userValues);
+    }
+    private void saveUserContacts(UserModelRes userModelRes){
+        Log.d(TAG, "saveUserContacts");
+        mDataManager.getPreferenceManager().saveUserPhoto(Uri.parse(userModelRes.getData().getUser().getPublicInfo().getPhoto()));
+        mDataManager.getPreferenceManager().saveUserAvatar(Uri.parse(userModelRes.getData().getUser().getPublicInfo().getAvatar()));
+        List<String> list=new ArrayList<>();
+        list.add(userModelRes.getData().getUser().getContacts().getPhone());
+        list.add(userModelRes.getData().getUser().getContacts().getEmail());
+        list.add(userModelRes.getData().getUser().getContacts().getVk().replaceFirst("https://",""));
+        list.add(userModelRes.getData().getUser().getRepositories().getRepo().get(0).getGit().replaceFirst("https://",""));
+        list.add(userModelRes.getData().getUser().getPublicInfo().getBio());
+        mDataManager.getPreferenceManager().saveUserProfileData(list);
     }
 }
 
