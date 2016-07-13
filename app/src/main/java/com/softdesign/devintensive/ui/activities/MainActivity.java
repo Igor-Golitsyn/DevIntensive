@@ -40,7 +40,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.github.siyamed.shapeimageview.CircularImageView;
 import com.softdesign.devintensive.R;
 import com.softdesign.devintensive.data.managers.DataManager;
 import com.softdesign.devintensive.utils.ConstantManager;
@@ -103,6 +105,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     ImageView mLinkGitImg;
     @BindView(R.id.user_profile_content)
     NestedScrollView mNestedScrollView;
+    @BindView(R.id.user_value_raiting)
+    TextView mUserValueRaiting;
+    @BindView(R.id.user_value_code_lines)
+    TextView mUserValueCodeLines;
+    @BindView(R.id.user_value_projects)
+    TextView mUserValueProjects;
+    private CircularImageView mCircularDrawerHeaderAvatar;
+    private TextView mUserNameDrawerHeader;
+    private TextView mUserEmailDrawerHeader;
+    private List<TextView> mUserValuesViews;
 
     /**
      * Старт 1
@@ -155,9 +167,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
+
             @Override
             public void afterTextChanged(Editable s) {
                 if (!checkEmail()) showToast(getString(R.string.wrong_email));
@@ -167,12 +181,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
+
             @Override
             public void afterTextChanged(Editable s) {
-                if (!checkPhoneNumber())showToast(getString(R.string.wrong_phone_number));
+                if (!checkPhoneNumber()) showToast(getString(R.string.wrong_phone_number));
             }
         });
 
@@ -183,6 +199,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mUserInfoViews.add(mUserGit);
         mUserInfoViews.add(mUserBio);
 
+        mUserValuesViews = new ArrayList<>();
+        mUserValuesViews.add(mUserValueRaiting);
+        mUserValuesViews.add(mUserValueCodeLines);
+        mUserValuesViews.add(mUserValueProjects);
+
         mFab.setOnClickListener(this);
         mProfilePlaceHolder.setOnClickListener(this);
         mCallImg.setOnClickListener(this);
@@ -192,6 +213,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         setupToolbar();
         setupDrawer();
+        initUserInfo();
+        initFromServerUserValue();
+
+
         Picasso.with(this)
                 .load(mDataManager.getPreferenceManager().loadUserPhoto())
                 .placeholder(R.drawable.userphoto)
@@ -201,7 +226,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             changeEditMode(mCurrentEditMode);
         } else {
             mCurrentEditMode = savedInstanceState.getBoolean(ConstantManager.EDIT_MODE_KEY, false);
-            loadUserInfo();
             changeEditMode(mCurrentEditMode);
         }
     }
@@ -347,6 +371,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 return false;
             }
         });
+        mCircularDrawerHeaderAvatar = (CircularImageView) navigationView.getHeaderView(0).findViewById(R.id.drawer_header_avatar);
+        mUserEmailDrawerHeader = (TextView) navigationView.getHeaderView(0).findViewById(R.id.drawer_header_user_email_txt);
+        mUserEmailDrawerHeader.setText(mDataManager.getPreferenceManager().loadUserProfileData().get(1));
+        Picasso.with(this)
+                .load(mDataManager.getPreferenceManager().loadUserAvatar())
+                .placeholder(R.drawable.camaro_yellow)
+                .into(mCircularDrawerHeaderAvatar);
     }
 
     /**
@@ -428,8 +459,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     /**
      * Загружает данные пользователя
      */
-    private void loadUserInfo() {
-        Log.d(TAG, "loadUserInfo");
+    private void initUserInfo() {
+        Log.d(TAG, "initUserInfo");
         List<String> userData = mDataManager.getPreferenceManager().loadUserProfileData();
         for (int i = 0; i < userData.size(); i++) {
             mUserInfoViews.get(i).setText(userData.get(i));
@@ -684,5 +715,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         if ((emailss[1].length() - 1 - lastT) < 2) return false;//на символы после "."
         if (lastT < 2) return false;//на символы перед "."
         return true;
+    }
+
+    private void initFromServerUserValue() {
+        Log.d(TAG, "initFromServerUserValue");
+        List<String> userData = mDataManager.getPreferenceManager().loadUserProfileValues();
+        for (int i = 0; i < userData.size(); i++) {
+            mUserValuesViews.get(i).setText(userData.get(i));
+        }
     }
 }
