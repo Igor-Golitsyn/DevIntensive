@@ -58,7 +58,7 @@
                         android:text="@string/incomin_programm_text"
                         android:textAllCaps="true"
                         android:textColor="@color/color_orange_red"
-                        android:textSize="20dp"/>
+                        android:textSize="@dimen/font_medium_20"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -83,7 +83,7 @@
                             android:inputType="textEmailAddress"
                             android:textColor="@color/color_dim_gray"
                             android:textColorHint="@color/color_dim_gray"
-                            android:textSize="14dp"/>
+                            android:textSize="@dimen/font_small_14"/>
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -99,7 +99,7 @@
                             android:inputType="textPassword"
                             android:textColor="@color/color_dim_gray"
                             android:textColorHint="@color/color_dim_gray"
-                            android:textSize="14dp"/>
+                            android:textSize="@dimen/font_small_14"/>
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -122,7 +122,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/spacing_normal_16"
                         android:text="@string/forgot_password"
-                        android:textSize="14dp"
+                        android:textSize="@dimen/font_small_14"
                         />
                 </LinearLayout>
 
