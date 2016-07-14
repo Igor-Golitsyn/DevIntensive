@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.softdesign.devintensive.R;
@@ -68,6 +69,7 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
         private static final String TAG = ConstantManager.TAG_PREFIX + "UserViewHolder";
         protected AspectRatioImageView userPhoto;
         protected TextView mFullName, mRating, mCodeLines, mProjects, mBio;
+        protected Button mShowMore;
 
         public UserViewHolder(View itemView) {
             super(itemView);
@@ -78,6 +80,9 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserViewHold
             mCodeLines = (TextView) itemView.findViewById(R.id.code_lines_txt);
             mProjects = (TextView) itemView.findViewById(R.id.projects_txt);
             mBio = (TextView) itemView.findViewById(R.id.bio_txt);
+        }
+        public interface CustomClickListener{
+            void onUserItemClickListener();
         }
     }
 }
