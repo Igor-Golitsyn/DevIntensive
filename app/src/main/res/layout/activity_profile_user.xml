@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_coordinator_conteiner"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_primary"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/color_primary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/user_photo_img"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/profile_image_size"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/user_bg"
+                />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/marginTopForToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/AppTheme.PopupOverlay"
+                android:titleTextColor="@color/color_white"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:theme="@style/ToolBarStyle">
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!-- Create status bar -->
+    <LinearLayout
+        android:id="@+id/user_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_behavior="com.softdesign.devintensive.utils.UserScrollBehavior">
+
+        <View
+            android:id="@+id/big_separ_first"
+            style="@style/separatorBig"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_dim_gray"
+            android:orientation="horizontal"
+            >
+            <!-- First element reiting -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="25"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/user_value_raiting"
+                    style="@style/textViewStatus.value"
+                    android:text="@string/reiting_value"
+                    />
+
+                <TextView
+                    style="@style/textViewStatus.nameValue"
+                    android:text="@string/reiting_name"
+                    />
+            </LinearLayout>
+
+            <View
+                style="@style/separatorVertical">
+            </View>
+            <!-- Second element code -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/user_value_code_lines"
+                    style="@style/textViewStatus.value"
+                    android:text="@string/lines_code_value"
+                    />
+
+                <TextView
+                    style="@style/textViewStatus.nameValue"
+                    android:text="@string/lines_code_name"
+                    />
+            </LinearLayout>
+
+            <View
+                style="@style/separatorVertical">
+            </View>
+            <!-- Third element proekts -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="25"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/user_value_projects"
+                    style="@style/textViewStatus.value"
+                    android:text="@string/projects_value"
+                    />
+
+                <TextView
+                    style="@style/textViewStatus.nameValue"
+                    android:text="@string/projects_name"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/big_separ_second"
+            style="@style/separatorBig"></View>
+
+    </LinearLayout>
+
+    <!-- Include UserPofile Content -->
+    <include layout="@layout/static_profile_content"></include>
+
+</android.support.design.widget.CoordinatorLayout>

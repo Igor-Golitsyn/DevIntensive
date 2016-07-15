@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_big_72">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Репозиторий">
+    </TextView>
+
+    <TextView
+        android:id="@+id/git_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:hint="@string/github_repo_string"
+        android:text="@string/github_repo"
+        android:lines="2"
+        android:textSize="@dimen/font_medium_20"/>
+
+</RelativeLayout>
