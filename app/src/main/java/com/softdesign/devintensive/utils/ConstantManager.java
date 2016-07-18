@@ -11,7 +11,7 @@ public interface ConstantManager {
     int CAMERA_REQUEST_PERMITION_CODE = 96;
     String TAG_PREFIX = "DEV ";
     String EDIT_MODE_KEY = "EDIT_MODE_KEY";
-    String LOGIN_STATUS_KEY="LOGIN_STATUS_KEY";
+    String LOGIN_STATUS_KEY = "LOGIN_STATUS_KEY";
     String USER_PHONE_KEY = "USER_1_KEY";
     String USER_EMAIL_KEY = "USER_2_KEY";
     String USER_VK_KEY = "USER_3_KEY";
@@ -22,7 +22,7 @@ public interface ConstantManager {
     String AUTH_TOKEN = "AUTH_TOKEN";
     String USER_ID_KEY = "USER_ID_KEY";
     String USER_REITING_VALUE = "USER_REITING_VALUE";
-    String USER_CODE_LINES_VALUE ="USER_CODE_LINES_VALUE" ;
+    String USER_CODE_LINES_VALUE = "USER_CODE_LINES_VALUE";
     String USER_PROJECT_VALUE = "USER_PROJECT_VALUE";
-
+    String PARCELABLER_KEY = "PARCELABLER_KEY";
 }

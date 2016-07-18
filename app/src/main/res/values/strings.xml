@@ -11,7 +11,7 @@
     <string name="about">I study java \n 1 \n 2 \n 3 \n 4 \n 5 \n 69</string>
     <string name="about_string">О себе</string>
     <string name="reiting_value">5</string>
-    <string name="reiting_name">Ретинг</string>
+    <string name="reiting_name">Рейтинг</string>
     <string name="lines_code_value">5</string>
     <string name="lines_code_name">Написано строк кода</string>
     <string name="projects_value">5</string>
@@ -36,5 +36,6 @@
     <string name="github_com">github.com</string>
     <string name="wrong_email">Неправильный почтовый ящик!</string>
     <string name="wrong_phone_number">Неправильный номер телефона!</string>
+    <string name="view_element">Просмотр</string>
 
 </resources>

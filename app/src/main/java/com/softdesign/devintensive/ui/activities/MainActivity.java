@@ -361,11 +361,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      */
     private void setupDrawer() {
         Log.d(TAG, "setupDrawer");
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        final NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 showSnackBar(item.getTitle().toString());
+                Intent intent=new Intent(MainActivity.this,UserListActivity.class);
+                item.setIntent(intent);
+
+
                 item.setCheckable(true);
                 mNavigationDrawer.closeDrawer(GravityCompat.START);
                 return false;
