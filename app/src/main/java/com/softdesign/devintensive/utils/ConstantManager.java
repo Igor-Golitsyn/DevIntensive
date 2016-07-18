@@ -25,4 +25,5 @@ public interface ConstantManager {
     String USER_CODE_LINES_VALUE = "USER_CODE_LINES_VALUE";
     String USER_PROJECT_VALUE = "USER_PROJECT_VALUE";
     String PARCELABLER_KEY = "PARCELABLER_KEY";
+    long SEARCH_DELAY = 4000;
 }
