@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,17 +20,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
+import android.widget.TextView;
 
+import com.github.siyamed.shapeimageview.CircularImageView;
 import com.softdesign.devintensive.R;
 import com.softdesign.devintensive.data.managers.DataManager;
 import com.softdesign.devintensive.data.storage.models.User;
 import com.softdesign.devintensive.data.storage.models.UserDTO;
 import com.softdesign.devintensive.ui.adapters.UsersAdapter;
 import com.softdesign.devintensive.utils.ConstantManager;
+import com.softdesign.devintensive.utils.CustomLoader;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class UserListActivity extends AppCompatActivity {
+public class UserListActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<User>> {
     private static final String TAG = ConstantManager.TAG_PREFIX + "UserListActivity";
     private CoordinatorLayout mCoordinatorLayout;
     private Toolbar mToolbar;
@@ -39,6 +46,9 @@ public class UserListActivity extends AppCompatActivity {
     private MenuItem mSearchItem;
     private String mQuery;
     private Handler mHandler;
+    private CircularImageView mCircularDrawerHeaderAvatar;
+    private TextView mUserEmailDrawerHeader;
+    private Loader<List<User>> mLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +65,14 @@ public class UserListActivity extends AppCompatActivity {
         mHandler = new Handler();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
+
+
         setupToolbar();
         setupDrawer();
-        loadUsersFromDb();
+        mLoader = getSupportLoaderManager().initLoader(1, new Bundle(), this);
+        //loadUsersFromDb();
+
+
     }
 
     @Override
@@ -95,7 +110,26 @@ public class UserListActivity extends AppCompatActivity {
 
     private void setupDrawer() {
         Log.d(TAG, "setupDrawer");
-        //TODO реализовать переход в др активити
+        final NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.getMenu().getItem(1).setChecked(true);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                mNavigationDrawer.closeDrawer(GravityCompat.START);
+                if (item == navigationView.getMenu().getItem(0)) {
+                    finish();
+                }
+                return false;
+            }
+        });
+        mCircularDrawerHeaderAvatar = (CircularImageView) navigationView.getHeaderView(0).findViewById(R.id.drawer_header_avatar);
+        mUserEmailDrawerHeader = (TextView) navigationView.getHeaderView(0).findViewById(R.id.drawer_header_user_email_txt);
+        mUserEmailDrawerHeader.setText(mDataManager.getPreferenceManager().loadUserProfileData().get(1));
+        Picasso.with(this)
+                .load(mDataManager.getPreferenceManager().loadUserAvatar())
+                .placeholder(R.drawable.camaro_yellow)
+                .into(mCircularDrawerHeaderAvatar);
+
     }
 
     @Override
@@ -136,6 +170,7 @@ public class UserListActivity extends AppCompatActivity {
     }
 
     private void showUsersByQuery(String query) {
+        Log.d(TAG, "showUsersByQuery");
         mQuery = query;
         Runnable seachUser = new Runnable() {
             @Override
@@ -146,5 +181,37 @@ public class UserListActivity extends AppCompatActivity {
         mHandler.removeCallbacks(seachUser);
         long delay = mQuery.isEmpty() ? 0L : ConstantManager.SEARCH_DELAY;
         mHandler.postDelayed(seachUser, delay);
+    }
+
+
+    @Override
+    public Loader<List<User>> onCreateLoader(int id, Bundle args) {
+        Log.d(TAG, "onCreateLoader");
+        return new CustomLoader(this);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<List<User>> loader, List<User> data) {
+        Log.d(TAG, "onLoadFinished");
+        mUsers = data;
+        showUsers(mUsers);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<List<User>> loader) {
+        Log.d(TAG, "onLoaderReset");
+    }
+
+    /**
+     * Обработка нажатия кнопки "back". Убирает открытую NavigationDrawer
+     */
+    @Override
+    public void onBackPressed() {
+        Log.d(TAG, "onBackPressed");
+        if (mNavigationDrawer.isDrawerOpen(GravityCompat.START)) {
+            mNavigationDrawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
