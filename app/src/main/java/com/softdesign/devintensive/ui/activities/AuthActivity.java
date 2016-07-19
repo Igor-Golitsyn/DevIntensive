@@ -112,7 +112,8 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
     private void signIn() {
         Log.d(TAG, "signIn");
         if (NetworkStatusChecker.isNetworkAvailable(this)) {
-            Call<UserModelRes> call = mDataManager.loginUser(new UserLoginReq(mLoginEmail.getText().toString(), mLoginPassword.getText().toString()));
+            //Call<UserModelRes> call = mDataManager.loginUser(new UserLoginReq(mLoginEmail.getText().toString(), mLoginPassword.getText().toString()));
+            Call<UserModelRes> call = mDataManager.loginUser(new UserLoginReq("polus79@mail.ru", "patriot"));
             call.enqueue(new Callback<UserModelRes>() {
                 @Override
                 public void onResponse(Call<UserModelRes> call, Response<UserModelRes> response) {
