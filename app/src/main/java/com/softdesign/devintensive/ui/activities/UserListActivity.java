@@ -70,9 +70,6 @@ public class UserListActivity extends AppCompatActivity implements LoaderManager
         setupToolbar();
         setupDrawer();
         mLoader = getSupportLoaderManager().initLoader(1, new Bundle(), this);
-        //loadUsersFromDb();
-
-
     }
 
     @Override
@@ -127,7 +124,10 @@ public class UserListActivity extends AppCompatActivity implements LoaderManager
         mUserEmailDrawerHeader.setText(mDataManager.getPreferenceManager().loadUserProfileData().get(1));
         Picasso.with(this)
                 .load(mDataManager.getPreferenceManager().loadUserAvatar())
-                .placeholder(R.drawable.camaro_yellow)
+                .placeholder(R.drawable.user_bg)
+                .error(R.drawable.user_bg)
+                .fit()
+                .centerCrop()
                 .into(mCircularDrawerHeaderAvatar);
 
     }

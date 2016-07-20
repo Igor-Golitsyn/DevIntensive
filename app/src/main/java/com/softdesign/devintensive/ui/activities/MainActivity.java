@@ -219,7 +219,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         Picasso.with(this)
                 .load(mDataManager.getPreferenceManager().loadUserPhoto())
-                .placeholder(R.drawable.userphoto)
+                .placeholder(R.drawable.user_bg)
+                .error(R.drawable.user_bg)
+                .fit()
+                .centerCrop()
                 .into(mProfileImage);
 
         if (savedInstanceState == null) {
@@ -380,7 +383,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mUserEmailDrawerHeader.setText(mDataManager.getPreferenceManager().loadUserProfileData().get(1));
         Picasso.with(this)
                 .load(mDataManager.getPreferenceManager().loadUserAvatar())
+                .error(R.drawable.header_bg)
                 .placeholder(R.drawable.user_bg)
+                .fit()
+                .centerCrop()
                 .into(mCircularDrawerHeaderAvatar);
     }
 
@@ -456,7 +462,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      */
     private void insertProfileImage(Uri selectedImage) {
         Log.d(TAG, "insertProfileImage");
-        Picasso.with(this).load(selectedImage).into(mProfileImage);
+        Picasso.with(this)
+                .load(selectedImage)
+                .placeholder(R.drawable.user_bg)
+                .error(R.drawable.user_bg)
+                .fit()
+                .centerCrop()
+                .into(mProfileImage);
         mDataManager.getPreferenceManager().saveUserPhoto(selectedImage);
     }
 
