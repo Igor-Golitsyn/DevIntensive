@@ -192,6 +192,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         });
 
+//Получения массива View можно реализовать через ButterKnife @BindViews({ R.id.first_name, R.id.middle_name, R.id.last_name })
+
         mUserInfoViews = new ArrayList<>();
         mUserInfoViews.add(mUserPhone);
         mUserInfoViews.add(mUserMail);
@@ -216,7 +218,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         initUserInfo();
         initFromServerUserValue();
 
-
+// реализовать синглтон в Datamanager и получить Instance от туда исспользуя Picasso Builder
         Picasso.with(this)
                 .load(mDataManager.getPreferenceManager().loadUserPhoto())
                 .placeholder(R.drawable.user_bg)
@@ -378,9 +380,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 return false;
             }
         });
+        
+        //вот тут хорошо
         mCircularDrawerHeaderAvatar = (CircularImageView) navigationView.getHeaderView(0).findViewById(R.id.drawer_header_avatar);
         mUserEmailDrawerHeader = (TextView) navigationView.getHeaderView(0).findViewById(R.id.drawer_header_user_email_txt);
         mUserEmailDrawerHeader.setText(mDataManager.getPreferenceManager().loadUserProfileData().get(1));
+        
+        //аналогично предидущему вызову пикасса + нет трансформации фото
         Picasso.with(this)
                 .load(mDataManager.getPreferenceManager().loadUserAvatar())
                 .error(R.drawable.header_bg)
@@ -511,6 +517,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     /**
      * Загружает фото из галереи
      */
+     
+     //Добавить запрос разрешения на Write/Read External Storage
     private void loadPhotoFromGallery() {
         Log.d(TAG, "loadPhotoFromGallery");
         Intent takeGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -557,6 +565,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * @param permissions
      * @param grantResults
      */
+     
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         Log.d(TAG, "onRequestPermissionsResult");
@@ -647,6 +657,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * @return
      * @throws IOException
      */
+     
+     
     private File createImageFile() throws IOException {
         Log.d(TAG, "createImageFile");
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
