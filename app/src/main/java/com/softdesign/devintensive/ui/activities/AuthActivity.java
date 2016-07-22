@@ -114,6 +114,8 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
         if (NetworkStatusChecker.isNetworkAvailable(this)) {
             Call<UserModelRes> call = mDataManager.loginUser(new UserLoginReq(mLoginEmail.getText().toString(), mLoginPassword.getText().toString()));
             call.enqueue(new Callback<UserModelRes>() {
+                
+                //try catch
                 @Override
                 public void onResponse(Call<UserModelRes> call, Response<UserModelRes> response) {
                     if (response.code() == 200) {
@@ -151,9 +153,13 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
         Log.d(TAG, "saveUserContacts");
         mDataManager.getPreferenceManager().saveUserPhoto(Uri.parse(userModelRes.getData().getUser().getPublicInfo().getPhoto()));
         mDataManager.getPreferenceManager().saveUserAvatar(Uri.parse(userModelRes.getData().getUser().getPublicInfo().getAvatar()));
+        
+        //названия пишите корректные что бы было понятно что за переменная или метод
         List<String> list = new ArrayList<>();
         list.add(userModelRes.getData().getUser().getContacts().getPhone());
         list.add(userModelRes.getData().getUser().getContacts().getEmail());
+        
+        //статический метод в хелперах для обработки Data сделайте
         list.add(userModelRes.getData().getUser().getContacts().getVk().replaceFirst("https://", ""));
         list.add(userModelRes.getData().getUser().getRepositories().getRepo().get(0).getGit().replaceFirst("https://", ""));
         list.add(userModelRes.getData().getUser().getPublicInfo().getBio());
