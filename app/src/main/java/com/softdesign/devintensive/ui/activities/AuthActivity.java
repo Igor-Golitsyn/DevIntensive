@@ -3,6 +3,7 @@ package com.softdesign.devintensive.ui.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -15,7 +16,12 @@ import android.widget.TextView;
 import com.softdesign.devintensive.R;
 import com.softdesign.devintensive.data.managers.DataManager;
 import com.softdesign.devintensive.data.network.req.UserLoginReq;
+import com.softdesign.devintensive.data.network.res.UserListRes;
 import com.softdesign.devintensive.data.network.res.UserModelRes;
+import com.softdesign.devintensive.data.storage.models.Repository;
+import com.softdesign.devintensive.data.storage.models.RepositoryDao;
+import com.softdesign.devintensive.data.storage.models.User;
+import com.softdesign.devintensive.data.storage.models.UserDao;
 import com.softdesign.devintensive.utils.ConstantManager;
 import com.softdesign.devintensive.utils.NetworkStatusChecker;
 
@@ -31,6 +37,8 @@ import retrofit2.Response;
 public class AuthActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = ConstantManager.TAG_PREFIX + "AuthActivity";
     private DataManager mDataManager;
+    private RepositoryDao mRepositoryDao;
+    private UserDao mUserDao;
     @BindView(R.id.login_button)
     Button mSignIn;
     @BindView(R.id.et_login_email)
@@ -53,6 +61,9 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
         mRemembePassword.setOnClickListener(this);
         mSignIn.setOnClickListener(this);
         mDataManager = DataManager.getInstance();
+        mUserDao=mDataManager.getDaoSession().getUserDao();
+        mRepositoryDao=mDataManager.getDaoSession().getRepositoryDao();
+
     }
 
     @Override
@@ -86,8 +97,15 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
         mDataManager.getPreferenceManager().saveUserId(userModelRes.getData().getUser().getId());
         saveUserValues(userModelRes);
         saveUserContacts(userModelRes);
-        Intent loginIntent = new Intent(this, MainActivity.class);
+        saveUserInDb();
+        Handler handler=new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+        Intent loginIntent = new Intent(AuthActivity.this, MainActivity.class);
         startActivity(loginIntent);
+            }
+        },1500);
         finish();
     }
 
@@ -118,26 +136,71 @@ public class AuthActivity extends BaseActivity implements View.OnClickListener {
             showSnackBar("Сеть недоступна");
         }
     }
-    private void saveUserValues(UserModelRes userModelRes){
+
+    private void saveUserValues(UserModelRes userModelRes) {
         Log.d(TAG, "saveUserValues");
-        int[] userValues={
+        int[] userValues = {
                 userModelRes.getData().getUser().getProfileValues().getRaiting(),
                 userModelRes.getData().getUser().getProfileValues().getLinesCode(),
                 userModelRes.getData().getUser().getProfileValues().getProjects(),
         };
         mDataManager.getPreferenceManager().saveUserProfileValues(userValues);
     }
-    private void saveUserContacts(UserModelRes userModelRes){
+
+    private void saveUserContacts(UserModelRes userModelRes) {
         Log.d(TAG, "saveUserContacts");
         mDataManager.getPreferenceManager().saveUserPhoto(Uri.parse(userModelRes.getData().getUser().getPublicInfo().getPhoto()));
         mDataManager.getPreferenceManager().saveUserAvatar(Uri.parse(userModelRes.getData().getUser().getPublicInfo().getAvatar()));
-        List<String> list=new ArrayList<>();
+        List<String> list = new ArrayList<>();
         list.add(userModelRes.getData().getUser().getContacts().getPhone());
         list.add(userModelRes.getData().getUser().getContacts().getEmail());
-        list.add(userModelRes.getData().getUser().getContacts().getVk().replaceFirst("https://",""));
-        list.add(userModelRes.getData().getUser().getRepositories().getRepo().get(0).getGit().replaceFirst("https://",""));
+        list.add(userModelRes.getData().getUser().getContacts().getVk().replaceFirst("https://", ""));
+        list.add(userModelRes.getData().getUser().getRepositories().getRepo().get(0).getGit().replaceFirst("https://", ""));
         list.add(userModelRes.getData().getUser().getPublicInfo().getBio());
         mDataManager.getPreferenceManager().saveUserProfileData(list);
+    }
+
+    private void saveUserInDb() {
+        Log.d(TAG, "saveUserInDb");
+        Call<UserListRes> call = mDataManager.getUserListFromNetwork();
+        call.enqueue(new Callback<UserListRes>() {
+            @Override
+            public void onResponse(Call<UserListRes> call, Response<UserListRes> response) {
+                try {
+                    if (response.code() == 200) {
+                        List<Repository> allRepositories = new ArrayList<>();
+                        List<User> allUsers = new ArrayList<User>();
+                        for (UserListRes.UserData userData : response.body().getData()) {
+                            allRepositories.addAll(getRepoListFromUserRes(userData));
+                            allUsers.add(new User(userData));
+                        }
+                        mRepositoryDao.insertOrReplaceInTx(allRepositories);
+                        mUserDao.insertOrReplaceInTx(allUsers);
+                    } else {
+                        showSnackBar("Список пользователей не может быть получен");
+                        Log.e(TAG, response.errorBody().source().toString());
+
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, e.getMessage());
+                    showSnackBar("Что то пошло не так.");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserListRes> call, Throwable t) {
+                showSnackBar(t.getMessage());
+            }
+        });
+    }
+
+    private List<Repository> getRepoListFromUserRes(UserListRes.UserData userData) {
+        final String userId = userData.getId();
+        List<Repository> repositories = new ArrayList<>();
+        for (UserModelRes.Repo repo : userData.getRepositories().getRepo()) {
+            repositories.add(new Repository(repo, userId));
+        }
+        return repositories;
     }
 }
 

@@ -112,8 +112,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.user_value_projects)
     TextView mUserValueProjects;
     private CircularImageView mCircularDrawerHeaderAvatar;
-    private TextView mUserNameDrawerHeader;
     private TextView mUserEmailDrawerHeader;
+    private TextView mUserNameDrawerHeader;
     private List<TextView> mUserValuesViews;
 
     /**
@@ -219,7 +219,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         Picasso.with(this)
                 .load(mDataManager.getPreferenceManager().loadUserPhoto())
-                .placeholder(R.drawable.userphoto)
+                .placeholder(R.drawable.user_bg)
+                .error(R.drawable.user_bg)
+                .fit()
+                .centerCrop()
                 .into(mProfileImage);
 
         if (savedInstanceState == null) {
@@ -362,15 +365,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void setupDrawer() {
         Log.d(TAG, "setupDrawer");
         final NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.getMenu().getItem(0).setChecked(true);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                showSnackBar(item.getTitle().toString());
-                Intent intent=new Intent(MainActivity.this,UserListActivity.class);
-                item.setIntent(intent);
-
-
-                item.setCheckable(true);
+                if (item == navigationView.getMenu().getItem(1)) {
+                    Intent intent = new Intent(MainActivity.this, UserListActivity.class);
+                    startActivity(intent);
+                    item.setChecked(false);
+                }
                 mNavigationDrawer.closeDrawer(GravityCompat.START);
                 return false;
             }
@@ -380,7 +383,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mUserEmailDrawerHeader.setText(mDataManager.getPreferenceManager().loadUserProfileData().get(1));
         Picasso.with(this)
                 .load(mDataManager.getPreferenceManager().loadUserAvatar())
-                .placeholder(R.drawable.camaro_yellow)
+                .error(R.drawable.header_bg)
+                .placeholder(R.drawable.user_bg)
+                .fit()
+                .centerCrop()
                 .into(mCircularDrawerHeaderAvatar);
     }
 
@@ -456,7 +462,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      */
     private void insertProfileImage(Uri selectedImage) {
         Log.d(TAG, "insertProfileImage");
-        Picasso.with(this).load(selectedImage).into(mProfileImage);
+        Picasso.with(this)
+                .load(selectedImage)
+                .placeholder(R.drawable.user_bg)
+                .error(R.drawable.user_bg)
+                .fit()
+                .centerCrop()
+                .into(mProfileImage);
         mDataManager.getPreferenceManager().saveUserPhoto(selectedImage);
     }
 

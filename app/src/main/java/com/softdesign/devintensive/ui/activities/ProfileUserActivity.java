@@ -85,6 +85,8 @@ public class ProfileUserActivity extends BaseActivity {
                 .load(userDTO.getPhoto())
                 .placeholder(R.drawable.user_bg)
                 .error(R.drawable.user_bg)
+                .fit()
+                .centerCrop()
                 .into(mProfileImage);
     }
 }

@@ -4,8 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-import com.softdesign.devintensive.data.network.res.UserListRes;
-import com.softdesign.devintensive.data.network.res.UserModelRes;
 import com.softdesign.devintensive.utils.ConstantManager;
 
 import java.util.ArrayList;
@@ -59,18 +57,18 @@ public class UserDTO implements Parcelable {
         return mFullName;
     }
 
-    public UserDTO(UserListRes.UserData userData) {
+    public UserDTO(User userData) {
         Log.d(TAG, "UserDTO");
         List<String> repoLink = new ArrayList<>();
-        mPhoto = userData.getPublicInfo().getPhoto();
+        mPhoto = userData.getPhoto();
         mFullName = userData.getFullName();
-        mRaiting = String.valueOf(userData.getProfileValues().getRaiting());
-        mCodeLines = String.valueOf(userData.getProfileValues().getLinesCode());
-        mProjects = String.valueOf(userData.getProfileValues().getProjects());
-        mBio = userData.getPublicInfo().getBio();
+        mRaiting = String.valueOf(userData.getRating());
+        mCodeLines = String.valueOf(userData.getCodeLines());
+        mProjects = String.valueOf(userData.getProjects());
+        mBio = userData.getBio();
 
-        for (UserModelRes.Repo gitLink : userData.getRepositories().getRepo()) {
-            repoLink.add(gitLink.getGit());
+        for (Repository gitLink : userData.getRepositories()) {
+            repoLink.add(gitLink.getRepositoryName());
         }
         mRepositories = repoLink;
     }
